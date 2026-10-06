@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
     'description',
     'status',
     'assignee_id',
-    'label_id'
+    'label_id',
 ])]
 class Task extends Model
 {

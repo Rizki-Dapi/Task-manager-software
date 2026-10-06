@@ -11,8 +11,6 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Hash;
 use Override;
 
-use function Laravel\Prompts\search;
-
 class UserRepository implements UserRepositoryInterface
 {
     public function findById(int $id): ?User
@@ -32,7 +30,7 @@ class UserRepository implements UserRepositoryInterface
             ->with('roles')
             ->when(
                 $search,
-                fn($query, $search) => $query->where('name', 'ilike', "%{$search}%")
+                fn ($query, $search) => $query->where('name', 'ilike', "%{$search}%")
             )
             ->latest()
             ->paginate($perPage);
@@ -55,9 +53,9 @@ class UserRepository implements UserRepositoryInterface
     {
         return User::query()
             ->with('roles')
-            ->whereHas('roles', fn($query) => $query->where('name', $role))
-            ->when($search, fn($query, $search) => $query->where(
-                fn($q) => $q->where('name', 'ilike', "%{$search}")
+            ->whereHas('roles', fn ($query) => $query->where('name', $role))
+            ->when($search, fn ($query, $search) => $query->where(
+                fn ($q) => $q->where('name', 'ilike', "%{$search}")
             ))
             ->latest()
             ->paginate($perPage);
@@ -69,7 +67,7 @@ class UserRepository implements UserRepositoryInterface
         return User::query()
             ->whereHas(
                 'roles',
-                fn($query) => $query->where('name', RoleUserEnum::MEMBER->value)
+                fn ($query) => $query->where('name', RoleUserEnum::MEMBER->value)
             )
             ->get();
     }
@@ -77,6 +75,7 @@ class UserRepository implements UserRepositoryInterface
     public function create(array $data): User
     {
         $data['password'] = Hash::make($data['password']);
+
         return User::create($data);
     }
 

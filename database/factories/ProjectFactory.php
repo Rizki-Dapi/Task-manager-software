@@ -30,21 +30,21 @@ class ProjectFactory extends Factory
 
     public function complete(): static
     {
-        return $this->state(fn() => ['status' => StatusEnum::COMPLETED->value]);
+        return $this->state(fn () => ['status' => StatusEnum::COMPLETED->value]);
     }
 
     public function withoutDueDate(): static
     {
-        return $this->state(fn() => ['due_date' => null]);
+        return $this->state(fn () => ['due_date' => null]);
     }
 
     public function overdue(): static
     {
-        return $this->state(fn() => ['due_date' => now()->subDay()->toDateString()]);
+        return $this->state(fn () => ['due_date' => now()->subDay()->toDateString()]);
     }
 
     public function dueToday(): static
     {
-        return $this->state(fn() => ['due_date' => now()->toDateString()]);
+        return $this->state(fn () => ['due_date' => now()->toDateString()]);
     }
 }

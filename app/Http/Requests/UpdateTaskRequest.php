@@ -25,7 +25,7 @@ class UpdateTaskRequest extends FormRequest
         return [
             'title' => ['sometimes', 'string', 'max:255'],
             'description' => ['sometimes', 'string', 'max:1000'],
-            'label_id' => ['sometimes', 'integer', 'exists:labels,id']
+            'label_id' => ['sometimes', 'integer', 'exists:labels,id'],
         ];
     }
 }

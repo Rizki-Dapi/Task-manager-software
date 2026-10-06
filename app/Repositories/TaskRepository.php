@@ -24,23 +24,23 @@ class TaskRepository implements TaskRepositoryInterface
         return Task::query()
             ->where('project_id', $projectId)
             ->where(
-                fn($query) => $query
+                fn ($query) => $query
                     ->whereHas(
                         'projects',
-                        fn($query) => $query->where('created_by', $user->id)
+                        fn ($query) => $query->where('created_by', $user->id)
                     )
                     ->orWhereHas(
                         'projects.projectMembers',
-                        fn($query) => $query->where('user_id', $user->id)
+                        fn ($query) => $query->where('user_id', $user->id)
                     )
             )
             ->when(
                 $filters['status'] ?? null,
-                fn($query, $status) => $query->where('status', $status)
+                fn ($query, $status) => $query->where('status', $status)
             )
             ->when(
                 $filters['search'] ?? null,
-                fn($query, $search) => $query->where('title', 'ilike', "%{$search}%")
+                fn ($query, $search) => $query->where('title', 'ilike', "%{$search}%")
             )->get();
     }
 

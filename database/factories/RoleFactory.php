@@ -25,16 +25,16 @@ class RoleFactory extends Factory
 
     public function superAdmin(): static
     {
-        return $this->state(fn() => ['name' => RoleUserEnum::SUPER_ADMIN->value]);
+        return $this->state(fn () => ['name' => RoleUserEnum::SUPER_ADMIN->value]);
     }
 
     public function admin(): static
     {
-        return $this->state(fn() => ['name' => RoleUserEnum::ADMIN->value]);
+        return $this->state(fn () => ['name' => RoleUserEnum::ADMIN->value]);
     }
 
     public function member(): static
     {
-        return $this->state(fn() => ['name' => RoleUserEnum::MEMBER->value]);
+        return $this->state(fn () => ['name' => RoleUserEnum::MEMBER->value]);
     }
 }

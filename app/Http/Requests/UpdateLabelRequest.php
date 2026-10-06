@@ -23,7 +23,7 @@ class UpdateLabelRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['sometimes', 'string', 'max:255', 'unique:labels']
+            'name' => ['sometimes', 'string', 'max:255', 'unique:labels'],
         ];
     }
 }

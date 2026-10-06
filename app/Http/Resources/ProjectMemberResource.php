@@ -16,11 +16,11 @@ class ProjectMemberResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'project' => $this->whenLoaded('projects', fn() => [
+            'project' => $this->whenLoaded('projects', fn () => [
                 'id' => $this->projects->id,
                 'name' => $this->projects->name,
             ]),
-            'user' => $this->whenLoaded('user', fn() => [
+            'user' => $this->whenLoaded('user', fn () => [
                 'id' => $this->user->id,
                 'name' => $this->user->name,
             ]),

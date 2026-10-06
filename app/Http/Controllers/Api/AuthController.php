@@ -48,7 +48,7 @@ class AuthController extends Controller
         return response()->json(ApiFormatter::createJson('Token Refreshed successfully', [
             'user' => new UserResource($result['user']),
             'access_token' => $result['token'],
-            'token_type' => 'Bearer'
+            'token_type' => 'Bearer',
         ]), Response::HTTP_OK);
     }
 }

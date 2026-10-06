@@ -33,12 +33,12 @@ class TaskFactory extends Factory
 
     public function completed(): static
     {
-        return $this->state(fn() => ['statut', StatusEnum::COMPLETED->value]);
+        return $this->state(fn () => ['statut', StatusEnum::COMPLETED->value]);
     }
 
     public function assignedTo(User|int $user): static
     {
-        return $this->state(fn() => [
+        return $this->state(fn () => [
             'assignee_id' => $user instanceof User ? $user->id : $user,
             'status' => StatusEnum::COMPLETED->value,
         ]);

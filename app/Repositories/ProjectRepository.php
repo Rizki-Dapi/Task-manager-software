@@ -35,14 +35,14 @@ class ProjectRepository implements ProjectRepositoryInterface
         return $this->baseQuary($filters)
             ->whereHas(
                 'projectMembers',
-                fn($query) => $query->where('user_id', $userId)
+                fn ($query) => $query->where('user_id', $userId)
             )->paginate($perPage);
     }
 
     #[Override]
     public function create(array $data): Project
     {
-        return project::create($data);
+        return Project::create($data);
     }
 
     #[Override]
@@ -65,11 +65,11 @@ class ProjectRepository implements ProjectRepositoryInterface
             ->with('creator')
             ->when(
                 $filters['search'] ?? null,
-                fn($query, $search) => $query->where('name', 'ilike', "%{$search}%")
+                fn ($query, $search) => $query->where('name', 'ilike', "%{$search}%")
             )
             ->when(
                 $filters['status'] ?? null,
-                fn($query, $status) => $query->where('status', $status)
+                fn ($query, $status) => $query->where('status', $status)
             )->latest();
     }
 }

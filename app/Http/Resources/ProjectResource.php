@@ -20,7 +20,7 @@ class ProjectResource extends JsonResource
             'description' => $this->description,
             'status' => $this->status,
             'due_date' => $this->due_date?->toDateString(),
-            'created_by' => $this->whenLoaded('creator', fn() => [
+            'created_by' => $this->whenLoaded('creator', fn () => [
                 'id' => $this->creator->id,
                 'name' => $this->creator->name,
             ]),

@@ -9,7 +9,7 @@ beforeEach(function () {
     $this->member = createUserWithRole('member');
 });
 
-it("cannot add a user who is already a member", function () {
+it('cannot add a user who is already a member', function () {
     $project = Project::factory()->create();
     $user = memberOf($project);
 

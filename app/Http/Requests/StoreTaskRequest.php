@@ -26,7 +26,7 @@ class StoreTaskRequest extends FormRequest
             'project_id' => ['required', 'integer', 'exists:projects,id'],
             'title' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string', 'max:1000'],
-            'label_id' => ['required', 'integer', 'exists:labels,id']
+            'label_id' => ['required', 'integer', 'exists:labels,id'],
         ];
     }
 }

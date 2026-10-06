@@ -49,7 +49,7 @@ class UserController extends Controller
                 'last_page' => $users->lastPage(),
                 'per_page' => $users->perPage(),
                 'total' => $users->total(),
-            ]
+            ],
         ]), Response::HTTP_OK);
     }
 

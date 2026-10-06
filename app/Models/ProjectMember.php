@@ -14,7 +14,7 @@ class ProjectMember extends Model
 
     protected $with = [
         'user',
-        'projects'
+        'projects',
     ];
 
     public function user(): BelongsTo

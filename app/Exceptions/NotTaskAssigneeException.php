@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class NotTaskAssigneeException extends Exception
 {
-    public function __construct(string $message = "Your are not the assignee of this task.")
+    public function __construct(string $message = 'Your are not the assignee of this task.')
     {
         parent::__construct($message);
     }

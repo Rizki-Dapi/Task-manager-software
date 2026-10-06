@@ -92,17 +92,17 @@ class TaskService
             $project,
             $actingUser->id,
         )) {
-            throw new AssigneeNotProjectMemberException();
+            throw new AssigneeNotProjectMemberException;
         }
 
         if ($this->taskRepository->hasAssigneeTask($task)) {
-            throw new TaskAlreadyAssignedException();
+            throw new TaskAlreadyAssignedException;
         }
 
         $project = $this->projectRepository->findById($task->project_id);
 
         if ($project->due_date && now()->startOfDay()->greaterThan($project->due_date)) {
-            throw new ProjectDeadlinePassException();
+            throw new ProjectDeadlinePassException;
         }
 
         $taskAssign = $this->taskRepository->update($task, [

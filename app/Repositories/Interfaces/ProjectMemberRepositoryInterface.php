@@ -4,7 +4,6 @@ namespace App\Repositories\Interfaces;
 
 use App\Models\Project;
 use App\Models\ProjectMember;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 
 interface ProjectMemberRepositoryInterface

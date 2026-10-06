@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
     'description',
     'status',
     'due_date',
-    'created_by'
+    'created_by',
 ])]
 class Project extends Model
 {

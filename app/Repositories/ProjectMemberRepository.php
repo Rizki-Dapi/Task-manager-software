@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Models\Project;
 use App\Models\ProjectMember;
-use App\Models\User;
 use App\Repositories\Interfaces\ProjectMemberRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Override;
@@ -39,7 +38,7 @@ class ProjectMemberRepository implements ProjectMemberRepositoryInterface
     {
         return ProjectMember::firstOrCreate([
             'project_id' => $project->id,
-            'user_id' => $userId
+            'user_id' => $userId,
         ]);
     }
 

@@ -5,8 +5,6 @@ use App\Models\Role;
 use App\Models\Task;
 use App\Models\User;
 
-use function PHPUnit\Framework\assertJson;
-
 beforeEach(function () {
     $this->super_admin = createUserWithRole('super_admin');
     $this->admin = createUserWithRole('admin');

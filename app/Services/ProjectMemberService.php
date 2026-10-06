@@ -6,7 +6,6 @@ use App\Exceptions\ResourceInUseException;
 use App\Exceptions\UserAlreadyProjectMemberException;
 use App\Models\Project;
 use App\Models\ProjectMember;
-use App\Models\User;
 use App\Repositories\Interfaces\LogRepositoryInterface;
 use App\Repositories\Interfaces\ProjectMemberRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
@@ -40,7 +39,7 @@ class ProjectMemberService
     public function addMember(Project $project, int $userId): ProjectMember
     {
         if ($this->projectMemberRepository->isMember($project, $userId)) {
-            throw new UserAlreadyProjectMemberException();
+            throw new UserAlreadyProjectMemberException;
         }
 
         $data = $this->projectMemberRepository->addMember($project, $userId);
@@ -50,7 +49,7 @@ class ProjectMemberService
             'context' => [
                 'project_id' => $project->id,
                 'user_id' => $userId,
-            ]
+            ],
         ]);
 
         return $data->load(['user', 'projects']);
@@ -60,7 +59,7 @@ class ProjectMemberService
     {
         $member = $this->projectMemberRepository->findByProjectAndUser($project, $userId);
 
-        if (!$member) {
+        if (! $member) {
             throw new ModelNotFoundException('Project member not found');
         }
 
@@ -79,7 +78,7 @@ class ProjectMemberService
             'context' => [
                 'project_id' => $project->id,
                 'user_id' => $userId,
-            ]
+            ],
         ]);
     }
 }

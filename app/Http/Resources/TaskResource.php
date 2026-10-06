@@ -17,17 +17,17 @@ class TaskResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'project' => $this->whenLoaded('projects', fn() => [
+            'project' => $this->whenLoaded('projects', fn () => [
                 'id' => $this->projects->id,
                 'name' => $this->projects->name,
             ]),
             'description' => $this->description,
             'status' => $this->status,
-            'label' => $this->whenLoaded('labels', fn() => [
+            'label' => $this->whenLoaded('labels', fn () => [
                 'id' => $this->labels->id,
                 'name' => $this->labels->name,
             ]),
-            'assignee' => $this->whenLoaded('assigned', fn() => [
+            'assignee' => $this->whenLoaded('assigned', fn () => [
                 'id' => $this->assigned->id,
                 'name' => $this->assigned->name,
             ]),
