@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Project;
 use App\Models\Task;
 
 beforeEach(function () {
@@ -23,7 +24,13 @@ it('cannot let a member create a task', function () {
 });
 
 it('cannot let a member add a project member', function () {
-    actingAsApi($this->member)->postJson('/api/project-member/project/1')->assertStatus(403);
+    $project = Project::factory()->create();
+
+    actingAsApi($this->member)
+        ->postJson("/api/project-member/project/{$project->id}", [
+            'user_id' => $this->admin->id,
+        ])
+        ->assertStatus(403);
 });
 
 it('cannot let an admin create a user', function () {
